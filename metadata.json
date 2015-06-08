@@ -1,0 +1,14 @@
+{
+  "name": "bhaymore-useraccounts",
+  "version": "0.1.0",
+  "author": "bhaymore",
+  "summary": "Module used to make managing user accounts easier.",
+  "license": "Apache 2.0",
+  "source": "https://github.com/bhaymore/useraccounts.git",
+  "project_page": "https://github.com/bhaymore/useraccounts",
+  "issues_url": "https://github.com/bhaymore/useraccounts/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+
