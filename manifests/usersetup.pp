@@ -1,4 +1,4 @@
-define useraccounts::usersetup ($password, $username, $ensure='present', $groups=undef, $sshkey=undef, $needkey=false, $comment=undef) {
+define useraccounts::usersetup ($password, $username, $ensure='present', $groups=undef, $sshkey=undef, $needkey=false, $comment=undef, $shell='/bin/bash') {
   user { $username:
     ensure     => $ensure,
     name       => $username,
@@ -7,6 +7,7 @@ define useraccounts::usersetup ($password, $username, $ensure='present', $groups
     password   => $password,
     comment    => $comment,
     managehome => true,
+    shell      => $shell,
   }
   if $needkey == true {
     ssh_authorized_key { $username:
