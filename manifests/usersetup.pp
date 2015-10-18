@@ -1,6 +1,6 @@
 define useraccounts::usersetup (
   $password,
-  $username,
+  $username  = $title,
   $ensure    = 'present',
   $groups    = undef,
   $sshkey    = undef,
