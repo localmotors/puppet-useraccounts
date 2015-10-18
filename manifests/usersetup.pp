@@ -1,4 +1,13 @@
-define useraccounts::usersetup ($password, $username, $ensure='present', $groups=undef, $sshkey=undef, $needkey=false, $comment=undef, $shell='/bin/bash') {
+define useraccounts::usersetup (
+  $password,
+  $username,
+  $ensure    = 'present',
+  $groups    = undef,
+  $sshkey    = undef,
+  $needkey   = true,
+  $comment   = undef,
+  $shell     = '/bin/bash'
+  ) {
   user { $username:
     ensure     => $ensure,
     name       => $username,
