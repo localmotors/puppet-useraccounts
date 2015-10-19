@@ -3,7 +3,7 @@ define useraccounts::usersetup (
   $username  = $title,
   $ensure    = 'present',
   $groups    = undef,
-  $sshkey    = false,
+  $sshkey    = undef,
   $needkey   = true,
   $comment   = undef,
   $shell     = '/bin/bash'
