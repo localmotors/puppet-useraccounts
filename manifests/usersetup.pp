@@ -18,6 +18,9 @@ define useraccounts::usersetup (
     managehome => true,
     shell      => $shell,
   }
+  if $needkey == true and $sshkey == undef {
+    fail('An ssh key is required by default. If you do not need a key added, set the "needkey" parameter to false')
+  }
   if $needkey == true {
     ssh_authorized_key { $username:
       ensure  => $ensure,
