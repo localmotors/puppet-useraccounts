@@ -8,6 +8,12 @@ define useraccounts::usersetup (
   $comment   = undef,
   $shell     = '/bin/bash'
   ) {
+
+  if $groups {
+    validate_array($groups)
+  }
+  validate_bool($needkey)
+
   user { $username:
     ensure     => $ensure,
     name       => $username,
