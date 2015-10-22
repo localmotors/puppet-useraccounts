@@ -1,41 +1,47 @@
 # == Class: useraccounts
 #
-# Full description of class useraccounts here.
+# This class provides the "usersetup" defined type which allows you to easily setup user accounts with associated SSH keys. When used with
+# Hiera you can simplify the setup of user accounts.
 #
 # === Parameters
-#
-# Document parameters here.
-#
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
-#   e.g. "Specify one or more upstream ntp servers as an array."
+# This class has no parameters.
 #
 # === Variables
 #
-# Here you should define a list of variables that this module would require.
-#
-# [*sample_variable*]
-#   Explanation of how this variable affects the funtion of this class and if
-#   it has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#   External Node Classifier as a comma separated list of hostnames." (Note,
-#   global variables should be avoided in favor of class parameters as
-#   of Puppet 2.6.)
+# There are no variables for this class.
 #
 # === Examples
 #
-#  class { 'useraccounts':
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
-#  }
+# ==== With Hiera
+# class profiles::techusers {
+#   $techusers = hiera('techusers')
+#   $defaults  = {
+#     groups => ['sudo'],
+#   }
+#   create_resources(useraccounts::usersetup,$techusers,$defaults)
+# }
+#
+# ==== Without Hiera
+# class profiles::supportusers {
+#   useraccounts::usersetup { 'user1':
+#     ensure   => 'present',
+#     password => '$6$FAUAeOEiVBQ$6RWQyt42bZpf/06.YGvK1DDksD.dIMflfdfYNaRu7BE1aA7jTtdWliyLQZ3k7tN3bVfcrKvOaRKzsiI4BRjFa1',
+#     groups   => ['itusers','support'],
+#     needkey  => true,
+#     sshkey   => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDAtRKIbLVNQcAHghRRzad2G8Y7HgjySflYKpPvQnloUAMptvg5tqpJcWCVNMauKbr40OxHEF9Utr9CzYa/ZkBLfnZS1LPARtGuRfJmewo6T9TEA7fiqLx9deexd0youJsOngRD7RdJFV8WFwFRPPd7ahq2zIp12xw3/6Kpo/ZnsLYlavX+An/DZms82ZeKDL1z5V/4KZ7eKb8Q5K9eZJq5F3pLqMxu6yfOxFC1NbtFT4vWUHTfTt027IgBD9TnrUf2HeWx1R9jZsMQyRAS/4eZWur6ZN+7AaRxws2mGsWbiJA/zPnW5AOR9DBDPzW1/2BUjVgjYEh5k9326+roeIyh',
+#     comment  => 'User 1',
+#     username => 'user1',
+#   }
+# }
 #
 # === Authors
 #
-# Author Name <author@domain.com>
+# Brandon Haymore <brpacecar@gmail.com>
 #
 # === Copyright
 #
-# Copyright 2015 Your name here, unless otherwise noted.
+# Copyright 2015 Brandon Haymore, unless otherwise noted.
 #
 class useraccounts {
-
 
 }
