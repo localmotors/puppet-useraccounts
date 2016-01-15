@@ -1,12 +1,13 @@
 define useraccounts::usersetup (
-  $password,
+  $password  = undef,
   $username  = $title,
   $ensure    = 'present',
   $groups    = undef,
   $sshkey    = undef,
   $needkey   = true,
   $comment   = undef,
-  $shell     = '/bin/bash'
+  $shell     = '/bin/bash',
+  $expiry    = 'absent'
   ) {
 
   if $groups {
@@ -23,6 +24,7 @@ define useraccounts::usersetup (
     comment    => $comment,
     managehome => true,
     shell      => $shell,
+    expiry     => $expiry,  # must be absent or a padded date in the format of YYYY-MM-DD
   }
   if $needkey == true and $sshkey == undef {
     fail('An ssh key is required by default. If you do not need a key added, set the "needkey" parameter to false')
